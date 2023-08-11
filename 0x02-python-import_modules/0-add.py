@@ -3,4 +3,4 @@ from add_0 import add
 
 a = 1
 b = 2
-print(f"<a {a:d}> + <b {b:d}> = <add(a, b) {add(a,b):d}>")
+print("<a {}> + <b {}> = <add(a, b) {}>".format(a,b,add(a,b)))
