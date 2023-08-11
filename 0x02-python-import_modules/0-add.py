@@ -1,6 +1,8 @@
 #!/usr/bin/python3
-from add_0 import add
+if __name__ == "__main__":
+    from add_0 import add
 
 a = 1
 b = 2
-print("<a {}> + <b {}> = <add(a, b) {}>".format(a,b,add(a,b)))
+
+print(f"<a {a}> + <b {b}> = <add(a, b) {add(a,b)}>")
