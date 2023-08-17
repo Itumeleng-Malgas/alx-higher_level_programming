@@ -3,5 +3,4 @@
 def uniq_add(my_list=[]):
     unique_values = set()
     return sum(num for num in my_list
-               """ If the num is not already in the set, it will be added """
                if num not in unique_values and not unique_values.add(num))
