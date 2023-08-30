@@ -12,7 +12,6 @@ class Square:
             size (int): Size of the square.
             position (int, int): Position of the square.
         """
-
         self.size = size
         self.position = position
 
