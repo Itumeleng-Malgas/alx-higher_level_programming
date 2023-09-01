@@ -1,0 +1,45 @@
+The ``0-add_integer`` module
+============================
+
+Using ``add_integer``
+---------------------
+
+Prototype: ``def add_integer(a, b=98)``.
+
+	>>> add_integer = __import__('0-add_integer').add_integer
+
+	The second argument is optional - by default b = 98.
+	>>> add_integer(2)
+	100
+
+	Passing the second optional arg - b.
+	>>> add_integer(5, 2)
+	7
+
+	Adding a negative value
+	>>> add_integer(5, -2)
+	3
+
+	Raise a TypeError exeption if args are not of type [int, float].
+
+	>>> add_integer("str")
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+
+	>>> add_integer(2, "str")
+	Traceback (most recent call last):
+		...
+	TypeError: b must be an integer
+
+	>>> add_integer(None, None)
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+
+	Check for proper conversion of floats to int for both [a, b]
+	
+	>>> add_integer(2.0, 2.0)
+	4
+	>>> add_integer(2.5)
+	100
