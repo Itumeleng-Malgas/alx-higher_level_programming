@@ -2,7 +2,6 @@ The ``1-my_list`` module
 ========================
 
 Using ``MyList``
-
 >>> MyList = __import__('1-my_list').MyList
 
 Check 1: common case 
@@ -29,21 +28,21 @@ Check 2: when obj is not defined
         File "<stdin>", line 1, in <module>
     NameError: name 'my_list2' is not defined
 
-Check 3: pass a list obj
+Check 3: List obj
 
     >>> a = [1, 9, 4]
     >>> my_list = MyList(a)
     >>> my_list.print_sorted()
     [1, 4, 9]
 
-Check 4: pass an empty list
+Check 4: Empty list
 
     >>> a = []
     >>> my_list = MyList(a)
     >>> my_list.print_sorted()
     []
 
-Check 5: parent object
+Check 5: Parent object
     >>> my_list = [1, 2, 3]
     >>> my_list.print_sorted()
     Traceback (most recent call last):
