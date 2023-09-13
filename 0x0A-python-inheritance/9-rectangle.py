@@ -2,11 +2,18 @@
 """defines a Rectangle, a BaseGeometry method"""
 
 
-BaseGeometry = __import__("8-base_geometry").BaseGeometry
+BaseGeometry = __import__("7-base_geometry").BaseGeometry
 
 
 class Rectangle(BaseGeometry):
     """implements area a method of BaseGeometry super class"""
+
+    def __init__(self, width, height):
+        """Initializes a Rectangle instance with width and height"""
+        self.integer_validator("width", width)
+        self.integer_validator("height", height)
+        self._width = width
+        self._height = height
 
     def area(self):
         """compute the area with given width and height"""
