@@ -14,16 +14,28 @@ Check 0: Printing the area.
 
 
 Check 1: (value) as non-integer.
-    >>> base.integer_validator("The-name", "5")
+    >>> base.integer_validator("The-name", "str")
     Traceback (most recent call last):
         ...
     TypeError: The-name must be an integer
 
 Check 2: Value as less than zero
-    >>> base.integer_validator("The-name", -5)
+    >>> base.integer_validator("The-name", -1)
     Traceback (most recent call last):
         ...
     ValueError: The-name must be greater than 0
 
 Check 3: value greater than zero
-    >>> base.integer_validator("The-name", 5)
+    >>> base.integer_validator("The-name", 1)
+
+Check 4: value equal to zero
+    >>> base.integer_validator("The-name", 0)
+    Traceback (most recent call last):
+        ...
+    ValueError: The-name must be greater than 0
+
+Check 5: value as a float
+    >>> base.integer_validator("The-name", 1.23)
+    Traceback (most recent call last):
+        ...
+    TypeError: The-name must be an integer
