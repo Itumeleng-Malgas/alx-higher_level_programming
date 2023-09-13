@@ -39,3 +39,28 @@ Check 5: value as a float
     Traceback (most recent call last):
         ...
     TypeError: The-name must be an integer
+
+Check 6: value as a tuple
+    >>> base.integer_validator("The-name", (11,))
+    Traceback (most recent call last):
+        ...
+    TypeError: The-name must be an integer
+
+Check 6: value as a list
+    >>> base.integer_validator("The-name", [3])
+    Traceback (most recent call last):
+        ...
+    TypeError: The-name must be an integer
+
+Check 7: value as a dictionary
+    >>> base.integer_validator("The-name", {1, 2})
+    Traceback (most recent call last):
+        ...
+    TypeError: The-name must be an integer
+
+Check 8: value as None
+    >>> base.integer_validator("The-name", None)
+    Traceback (most recent call last):
+        ...
+    TypeError: The-name must be an integer
+
