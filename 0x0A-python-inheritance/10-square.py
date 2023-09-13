@@ -2,7 +2,7 @@
 """defines a Square, a BaseGeometry method"""
 
 
-Rectangle = __import__("9-base_geometry").Rectangle
+Rectangle = __import__("9-rectangle").Rectangle
 
 
 class Square(Rectangle):
