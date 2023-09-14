@@ -17,3 +17,6 @@ def load_add_save():
 
     items.extend(sys.argv[1:])
     save_to_file(items, "add_item.json")
+
+if __name__ == "__main__":
+    load_add_save()
