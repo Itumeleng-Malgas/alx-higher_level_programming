@@ -10,60 +10,60 @@ class Rectangle(Base):
         """ Rectangle class initialization """
         super().__init__(id)
 
-        self._width = None
+        self.__width = None
         self.width = width
 
-        self._height = None
+        self.__height = None
         self.height = height
 
-        self._x = None
+        self.__x = None
         self.x = x
 
-        self._y = None
+        self.__y = None
         self.y = y
 
     # getters and setter for width & height attributes
     @property
     def width(self):
         """ width attribute getter """
-        return self._width
+        return self.__width
 
     @width.setter
     def width(self, value):
         """ width attribute setter """
         self.integer_validator("width", value)
-        self._width = value
+        self.__width = value
 
     @property
     def height(self):
         """ height attribute getter """
-        return self._height
+        return self.__height
 
     @height.setter
     def height(self, value):
         """ height attribute setter """
         self.integer_validator("height", value)
-        self._height = value
+        self.__height = value
 
     # getters and setter for x & y attributes
     @property
     def x(self):
         """ x attribute getter """
-        return self._x
+        return self.__x
 
     @x.setter
     def x(self, value):
         """ x attribute setter """
         self.integer_validator("x", value, True)
-        self._x = value
+        self.__x = value
 
     @property
     def y(self):
         """ y attribute getter """
-        return self._y
+        return self.__y
 
     @y.setter
     def y(self, value):
         """ y attribute setter """
         self.integer_validator("y", value, True)
-        return self._y
+        return self.__y
