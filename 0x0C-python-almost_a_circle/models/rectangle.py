@@ -66,4 +66,4 @@ class Rectangle(Base):
     def y(self, value):
         """ y attribute setter """
         self.integer_validator("y", value, True)
-        return self.__y
+        self.__y = value

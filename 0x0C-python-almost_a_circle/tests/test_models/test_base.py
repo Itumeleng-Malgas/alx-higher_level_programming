@@ -17,16 +17,19 @@ class TestBase(unittest.TestCase):
         self.assertEqual(obj2.id, 2)
 
     def test_integer_validator(self):
-        obj0 = Base()
+        base_instance = Base()
 
         with self.assertRaisesRegex(TypeError, "attr must be an integer"):
-            obj0.integer_validator("attr", 12.5)
+            base_instance.integer_validator("attr", 12.5)
 
         with self.assertRaisesRegex(ValueError, "attr must be > 0"):
-            obj0.integer_validator("attr", 0)
+            base_instance.integer_validator("attr", 0)
 
         with self.assertRaisesRegex(TypeError, "attr must be an integer"):
-            obj0.integer_validator("attr", "2", True)
+            base_instance.integer_validator("attr", "2", True)
 
         with self.assertRaisesRegex(ValueError, "attr must be >= 0"):
-            obj0.integer_validator("attr", -1, True)
+            base_instance.integer_validator("attr", -1, True)
+
+if __name__ == '__main__':
+    unittest.main()
