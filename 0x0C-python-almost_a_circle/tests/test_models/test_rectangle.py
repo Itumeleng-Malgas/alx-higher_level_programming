@@ -99,6 +99,9 @@ class TestRectangleInitialization(unittest.TestCase):
         obj.y = 4
         self.assertEqual(4, obj.y)
 
+    def test_rectangle_area(self):
+        self.assertEquals(Rectangle(1, 2).area(), 2)
+
 
 if __name__ == '__main__':
     unittest.main()
