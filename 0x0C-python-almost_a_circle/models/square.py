@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """ implements the square, as a sub class of rectangle """
 
 
