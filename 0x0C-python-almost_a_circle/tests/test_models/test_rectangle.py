@@ -12,17 +12,62 @@ class TestRectangleInitialization(unittest.TestCase):
         self.assertEqual(Rectangle(1, 2, 0, 0, 99).id, 99)
         self.assertIsInstance(Rectangle(1, 2), Base)
 
-    def test_args(self):
-        with self.assertRaises(TypeError):
-            Rectangle()  # No args
+    def test_num_args(self):
+        with self.assertRaises(TypeError):  # No args
+            Rectangle()
 
-        with self.assertRaises(TypeError):
-            Rectangle(12)  # One arg
+        with self.assertRaises(TypeError):  # One arg
+            Rectangle(1)
 
-        with self.assertRaises(TypeError):
-            Rectangle(1, 2, 3, 4, 5, 6)  # Morethan 5 args
+        try:
+            Rectangle(1, 2)  # Two args
+        except TypeError:
+            self.fail("TypeError should not be raised")
 
-    def test_private_args(self):
+        try:
+            Rectangle(1, 2, 3)  # Three args
+        except TypeError:
+            self.fail("TypeError should not be raised")
+
+        try:
+            Rectangle(1, 2, 3, 4)  # Four args
+        except TypeError:
+            self.fail("TypeError should not be raised")
+
+    def test_incorrect_types(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Rectangle("1", 2)
+
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            Rectangle(1, "2")
+
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Rectangle(1, 2, "3")
+
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            Rectangle(1, 2, 3, "4")
+
+    def test_negative_args(self):
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Rectangle(-1, 2)
+
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            Rectangle(1, -2)
+
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            Rectangle(1, 2, -3)
+
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            Rectangle(1, 2, 3, -4)
+
+    def test_zero_value_args(self):
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Rectangle(0, 2)
+
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            Rectangle(1, 0)
+
+    def test_privacy_of_attr(self):
         with self.assertRaises(AttributeError):
             Rectangle(1, 1, 0, 0).__width
 
