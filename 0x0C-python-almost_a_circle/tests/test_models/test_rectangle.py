@@ -141,6 +141,63 @@ class TestRectangleInitialization(unittest.TestCase):
         expected_output = "  ##\n"
         self.assertEqual(actual_output, expected_output)
 
+        #  Test output with both x & y are not zero
+        obj = Rectangle(2, 1, 2, 2)
+
+        #  Redirect stdout to capture printed output
+        captured_output = io.StringIO()
+        sys.stdout = captured_output
+        obj.display()
+
+        sys.stdout = sys.__stdout__
+
+        actual_output = captured_output.getvalue()
+        expected_output = "\n\n  ##\n"
+        self.assertEqual(actual_output, expected_output)
+
+    def test_to_dictionary(self):
+        obj = Rectangle(10, 2, 1, 9, 100)
+
+        expected_output = {'x': 1, 'y': 9, 'id': 100, 'height': 2, 'width': 10}
+        self.assertEqual(obj.to_dictionary(), expected_output)
+
+    def test_update(self):
+        dummy = Rectangle(1, 1, 1, 1, 99)
+
+        #  Test when no arguments updated
+        dummy.update()
+        self.assertEqual("[Rectangle] (99) 1/1 - 1/1", str(dummy))
+
+        #  Test with one argument updated
+        dummy.update(2)
+        self.assertEqual("[Rectangle] (2) 1/1 - 1/1", str(dummy))
+
+        #  Test with two arguments updated
+        dummy.update(2, 2)
+        self.assertEqual("[Rectangle] (2) 1/1 - 2/1", str(dummy))
+
+        #  Test with three arguments updated
+        dummy.update(2, 2, 2)
+        self.assertEqual("[Rectangle] (2) 1/1 - 2/2", str(dummy))
+
+        #  Test with four arguments updated
+        dummy.update(2, 2, 2, 2)
+        self.assertEqual("[Rectangle] (2) 2/1 - 2/2", str(dummy))
+
+        #  Test with all five arguments updated
+        dummy.update(2, 2, 2, 2, 2)
+        self.assertEqual("[Rectangle] (2) 2/2 - 2/2", str(dummy))
+
+        #  Test with kwargs: id
+        dummy.update(id=99)
+        self.assertEqual("[Rectangle] (99) 2/2 - 2/2", str(dummy))
+
+        #  Test with kwargs: id, width
+        dummy.update(id=99, width=1)
+        self.assertEqual("[Rectangle] (99) 2/2 - 1/2", str(dummy))
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
