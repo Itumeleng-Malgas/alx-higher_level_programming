@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """ unittests for the base class """
 
-
 from models.base import Base
 import unittest
+import json
 
 
 class TestBase(unittest.TestCase):
@@ -30,6 +30,35 @@ class TestBase(unittest.TestCase):
 
         with self.assertRaisesRegex(ValueError, "attr must be >= 0"):
             base_instance.integer_validator("attr", -1, True)
+
+    def test_to_json_string(self):
+        #  Test when list in not empty
+        input_list = [{"key": "value"}]
+        expected_output = json.dumps(input_list)
+        self.assertEquals(Base.to_json_string(input_list), expected_output)
+
+        #  Test when list is empty
+        input_list = []
+        expected_output = "[]"
+        self.assertEquals(Base.to_json_string(input_list), expected_output)
+
+        #  Test when list in None
+        self.assertIsNotNone(Base.to_json_string(None))
+
+    def test_from_json_string(self):
+        #  Test when JSON string is not empty
+        input_json = '[{"key": "value"}]'
+        expected_output = [{"key": "value"}]
+        self.assertEquals(Base.from_json_string(input_json), expected_output)
+
+        #  Test when JSON string is empty
+        input_json = "[]"
+        expected_output = []
+        self.assertEquals(Base.from_json_string(input_json), expected_output)
+
+        #  Test when JSON string is None
+        self.assertIsNotNone(Base.from_json_string(None))
+
 
 if __name__ == '__main__':
     unittest.main()
