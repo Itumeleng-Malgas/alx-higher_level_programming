@@ -196,7 +196,44 @@ class TestRectangleInitialization(unittest.TestCase):
         dummy.update(id=99, width=1)
         self.assertEqual("[Rectangle] (99) 2/2 - 1/2", str(dummy))
 
+        #  Test with kwargs: id, width, height
+        dummy.update(id=99, width=1, height=1)
+        self.assertEqual("[Rectangle] (99) 2/2 - 1/1", str(dummy))
 
+        #  Test with kwargs: id, width, height, x
+        dummy.update(id=99, width=1, height=1, x=1)
+        self.assertEqual("[Rectangle] (99) 1/2 - 1/1", str(dummy))
+
+        #  Test with kwargs: id, width, height, x, y
+        dummy.update(id=99, width=1, height=1, x=1, y=1)
+        self.assertEqual("[Rectangle] (99) 1/1 - 1/1", str(dummy))
+
+    def test_create(self):
+        #  Test with kwargs: id
+        try:
+            obj = Rectangle.create(id=89)
+            self.assertEqual(obj.id, 89)
+        except TypeError:
+            self.fail("TypeError should not be raised")
+
+        #  Test with kwargs: id, width
+        try:
+            obj = Rectangle.create(id=89, width=1)
+            self.assertEqual(obj.width, 1)
+        except TypeError:
+            self.assertEqual("TypeError should not be raised")
+
+        #  Test with kwargs: id, width, height
+        obj = Rectangle.create(id=89, width=1, height=2)
+        self.assertEqual(obj.height, 2)
+
+        #  Test with kwargs: id, width, height, x
+        obj = Rectangle.create(id=89, width=1, height=2, x=3)
+        self.assertEqual(obj.x, 3)
+
+        #  Test with kwargs: id, width, height, x, y
+        obj = Rectangle.create(id=89, width=1, height=2, x=3, y=4)
+        self.assertEqual(obj.y, 4)
 
 
 if __name__ == '__main__':
