@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """The first Base class"""
+import json, csv, turtle
 
 
 class Base:
@@ -26,3 +27,11 @@ class Base:
 
         if value < 0 and isXY:
             raise ValueError("{} must be >= 0".format(name))
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """ returns the JSON string representation of list_dictionaries """
+        if list_dictionaries is None or list_dictionaries == []:
+            return []
+
+        return json.dumps(list_dictionaries)
