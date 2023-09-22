@@ -5,6 +5,8 @@
 from models.rectangle import Rectangle
 from models.base import Base
 import unittest
+import sys
+import io
 
 
 class TestRectangleInitialization(unittest.TestCase):
@@ -101,6 +103,43 @@ class TestRectangleInitialization(unittest.TestCase):
 
     def test_rectangle_area(self):
         self.assertEquals(Rectangle(1, 2).area(), 2)
+
+    def test_to_str(self):
+        #  Test __str__ method
+        obj = Rectangle(4, 6, 2, 1, 12)
+
+        expected_output = "[Rectangle] (12) 2/1 - 4/6"
+        actual_output = obj.__str__()
+        self.assertEquals(actual_output, expected_output)
+
+    def test_display(self):
+        #  Test output without x & y
+        obj = Rectangle(2, 1)
+
+        #  Redirect stdout to capture printed output
+        captured_output = io.StringIO()
+        sys.stdout = captured_output
+        obj.display()
+
+        sys.stdout = sys.__stdout__  #  Reset stdout
+
+        actual_output = captured_output.getvalue()
+        expected_output = "##\n"
+        self.assertEquals(actual_output, expected_output)
+
+        #  Test output without y
+        obj = Rectangle(2, 1, 2)
+
+        #  Redirect stdout to capture printed output
+        captured_output = io.StringIO()
+        sys.stdout = captured_output
+        obj.display()
+
+        sys.stdout = sys.__stdout__
+
+        actual_output = captured_output.getvalue()
+        expected_output = "  ##\n"
+        self.assertEqual(actual_output, expected_output)
 
 
 if __name__ == '__main__':
