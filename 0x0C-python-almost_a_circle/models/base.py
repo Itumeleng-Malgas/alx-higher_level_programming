@@ -70,3 +70,16 @@ class Base:
             dummy.update(**dictionary)
 
             return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """ returns a list of instances """
+        filename = str(cls.__name__) + ".json"
+
+        try:
+            with open(filename, "r") as f:
+                list_dictionaries = Base.from_json_string(f.read())
+                return [cls.create(**dicts) for dicts in list_dictionaries]
+
+        except IOError:
+            return []
