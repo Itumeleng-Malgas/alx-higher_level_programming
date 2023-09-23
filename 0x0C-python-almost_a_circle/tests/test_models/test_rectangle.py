@@ -8,6 +8,7 @@ import unittest
 import json
 import sys
 import io
+import os
 
 
 class TestRectangleInitialization(unittest.TestCase):
@@ -262,6 +263,25 @@ class TestRectangleInitialization(unittest.TestCase):
         with open("Rectangle.json", "r") as f:
             data = f.read()
         self.assertEqual(data, expected_output)
+
+    def test_load_from_file(self):
+        #  Test loading from a non-existing file
+        path = "Rectangle.json"
+        if os.path.isfile(path):
+            os.remove(path)
+
+        instances = Rectangle.load_from_file()
+        self.assertEqual(instances, [])
+
+        #  Test loading from the existing file
+        test_data = [Rectangle(1, 2).to_dictionary()]
+        with open(path, 'w') as f:
+            f.write(json.dumps(test_data))
+
+        instances = Rectangle.load_from_file()
+        self.assertEqual(len(instances), len(test_data))
+
+
 
 
 if __name__ == '__main__':
