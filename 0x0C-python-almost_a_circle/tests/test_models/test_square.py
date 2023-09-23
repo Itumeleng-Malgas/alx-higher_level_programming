@@ -123,3 +123,51 @@ class TestSquareInitialization(unittest.TestCase):
 
         instances = Square.load_from_file()
         self.assertEqual(len(instances), len(test_data))
+
+    def test_num_args(self):
+        with self.assertRaises(TypeError):  # No args
+            Square()
+
+        try:
+            Square(1)
+        except TypeError:
+            self.fail("TypeError should not be raised")
+
+        try:
+            Square(1, 2)  # Two args
+        except TypeError:
+            self.fail("TypeError should not be raised")
+
+        try:
+            Square(1, 2, 3)  # Three args
+        except TypeError:
+            self.fail("TypeError should not be raised")
+
+        try:
+            Square(1, 2, 3, 4)  # Four args
+        except TypeError:
+            self.fail("TypeError should not be raised")
+
+    def test_incorrect_types(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Square("1")
+
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Square(1, "2")
+
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            Square(1, 2, "3")
+
+    def test_negative_args(self):
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Square(-1)
+
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            Square(1, -2)
+
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            Square(1, 2, -4)
+
+    def test_zero_value_args(self):
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Square(0)
