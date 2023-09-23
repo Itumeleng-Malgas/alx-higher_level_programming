@@ -5,6 +5,7 @@
 from models.rectangle import Rectangle
 from models.base import Base
 import unittest
+import json
 import sys
 import io
 
@@ -234,6 +235,33 @@ class TestRectangleInitialization(unittest.TestCase):
         #  Test with kwargs: id, width, height, x, y
         obj = Rectangle.create(id=89, width=1, height=2, x=3, y=4)
         self.assertEqual(obj.y, 4)
+
+    def test_rectangle_save_to_file(self):
+        # Test when the list is None
+        Rectangle.save_to_file(None)
+        expected_output = "[]"
+
+        with open("Rectangle.json", "r") as f:
+            data = f.read()
+        self.assertEqual(data, expected_output)
+
+        #  Test when list is []
+        Rectangle.save_to_file([])
+        expected_output = "[]"
+
+        with open("Rectangle.json", "r") as f:
+            data = f.read()
+        self.assertEqual(data, expected_output)
+
+        #  Test when the list is not empty
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        Rectangle.save_to_file([r1, r2])
+        expected_output = json.dumps([r1.to_dictionary(), r2.to_dictionary()])
+
+        with open("Rectangle.json", "r") as f:
+            data = f.read()
+        self.assertEqual(data, expected_output)
 
 
 if __name__ == '__main__':
