@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """The first Base class"""
 import json
 import csv
