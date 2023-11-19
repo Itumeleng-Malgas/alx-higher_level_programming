@@ -3,7 +3,10 @@ import MySQLdb
 import sys
 
 
-def list_states(username, password, database_name):
+if __name__ == "__main__":
+
+    # Get username, password, and database name from command line arguments
+    username, password, database_name = sys.argv[1], sys.argv[2], sys.argv[3]
 
     # Connect to MySQL server
     db = MySQLdb.connect(
@@ -29,9 +32,3 @@ def list_states(username, password, database_name):
     # Close the cursor and connection
     cursor.close()
     db.close()
-
-
-if __name__ == "__main__":
-    # Get username, password, and database name from command line arguments
-    username, password, database_name = sys.argv[1], sys.argv[2], sys.argv[3]
-    list_states(username, password, database_name)
