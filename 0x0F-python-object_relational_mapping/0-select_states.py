@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" lists all states from hbtn_0e_0_usa db """
 import MySQLdb
 import sys
 
@@ -22,6 +23,5 @@ if __name__ == "__main__":
     for state in states:
         print(state)
 
-    # Close the cursor and connection
     cursor.close()
     db.close()
