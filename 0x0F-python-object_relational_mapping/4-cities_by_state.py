@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" lists all states from hbtn_0e_0_usa db """
+""" lists all cities from hbtn_0e_4_usadb """
 import MySQLdb
 import sys
 
@@ -16,7 +16,7 @@ if __name__ == "__main__":
     )
 
     cursor = db.cursor()
-    query = "SELECT * FROM states ORDER BY id ASC"
+    query = "SELECT * FROM cities ORDER BY id ASC"
     cursor.execute(query)
 
     states = cursor.fetchall()
