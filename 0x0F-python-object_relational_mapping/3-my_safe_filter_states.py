@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Lists all states where name matches the argv save sqlinjection"""
+"""Lists all states, Use parameterized query to prevent SQL injection"""
 
 import MySQLdb
 import sys
@@ -17,7 +17,6 @@ if __name__ == "__main__":
 
     cursor = db.cursor()
 
-    # Use parameterized query to prevent SQL injection
     query = "SELECT * FROM states WHERE name LIKE BINARY %s"
     name_param = (sys.argv[4],)
 
