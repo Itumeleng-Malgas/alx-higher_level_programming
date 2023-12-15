@@ -16,7 +16,7 @@ if __name__ == "__main__":
     )
 
     cursor = db.cursor()
-    query = """SELECT DISTINCT cities.name FROM cities 
+    query = """SELECT DISTINCT cities.name FROM cities
     JOIN states ON states.id=cities.state_id WHERE states.name=%s"""
     name_param = (sys.argv[4],)
 
