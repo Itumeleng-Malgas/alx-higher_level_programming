@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-lists all State objects that contain the letter a
+Add new State
 """
 
 from model_state import Base, State

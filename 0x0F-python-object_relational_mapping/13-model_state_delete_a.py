@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-update State objects with id == 2 to New Mexico
+delete all State objects that contain the letter a
 """
 
 from model_state import Base, State
@@ -15,7 +15,9 @@ if __name__ == "__main__":
     engine = create_engine(database_url, pool_pre_ping=True)
     session = sessionmaker(bind=engine)()
 
-    retrieved_state = session.query(State).filter(State.id == 2).first()
-    if retrieved_state:
-        retrieved_state.name = "New Mexico"
-        session.commit()
+    query_result = session.query(State).filter(State.name.like('%a%')).all()
+
+    for state in query_result:
+        session.delete(state)
+
+    session.commit()
