@@ -8,6 +8,7 @@ from sqlalchemy.ext.declarative import declarative_base
 mymetadata = MetaData()
 Base = declarative_base(metadata=mymetadata)
 
+
 class State(Base):
     """
     Defines states columns, attributes of each state
