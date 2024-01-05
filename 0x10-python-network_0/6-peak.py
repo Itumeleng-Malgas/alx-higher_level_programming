@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ find peak mod """
 
+
 def find_peak(list_of_integers):
     """ find peak impl """
     low, high = 0, len(list_of_integers) - 1
