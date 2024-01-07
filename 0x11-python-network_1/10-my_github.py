@@ -14,10 +14,8 @@ if __name__ == "__main__":
     token = sys.argv[2]
 
     url = 'https://api.github.com/user'
-    auth_header = ('Basic ' + base64.b64encode(
-        f"{usern}:{token}".encode('utf-8')).decode('utf-8'))
 
-    headers = {'Authorization': auth_header}
+    headers = {'Authorization': f'Bearer {token}'}
     response = requests.get(url, headers=headers)
 
     user_data = response.json()
