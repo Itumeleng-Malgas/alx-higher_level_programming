@@ -1,18 +1,18 @@
 #!/usr/bin/python3
 """
-A simple script to make an HTTP request to https://alx-intranet.hbtn.io/status
-and print information about the response.
+Module for fetching https://alx-intranet.hbtn.io/status
 """
+
 import urllib.request
 
 if __name__ == "__main__":
-    # Open the specified URL and read the response
-    with urllib.request.urlopen('https://alx-intranet.hbtn.io/status') as resp:
-        content = resp.read()
-        utf8_content = content.decode('utf-8')
+    url = "https://alx-intranet.hbtn.io/status"
 
-        # Print information about the response
-        print("Body response:")
-        print("    - type:", type(content))
-        print("    - content:", content)
-        print("    - utf8 content:", utf8_content)
+    with urllib.request.urlopen(url) as response:
+        content = response.read()
+
+    print("Body response:")
+    print("\t- type:", type(content))
+    print("\t- content:", content)
+    print("\t- utf8 content:", content.decode('utf-8'))
+
