@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     usern, token = sys.argv[1], sys.argv[2]
     url = 'https://api.github.com/user'
-:x
+
     headers = {'Authorization': f'token {token}'}
     response = requests.get(url, headers=headers)
 
