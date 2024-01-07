@@ -7,7 +7,7 @@ import requests
 import sys
 
 
-def get_commit(repo_name, owner_name):
+def get_commits(repo_name, owner_name):
     """
     Calls github api to retrieve commits.
     """
@@ -24,9 +24,5 @@ def get_commit(repo_name, owner_name):
         print(f"{sha}: {author_name}")
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print(f"Usage: {sys.argv[0]} <repository_name> <owner_name>")
-        sys.exit(1)
-
-        repo_name, owner_name = sys.argv[1], sys.argv[2]
-        get_commits(repo_name, owner_name)
+    repo_name, owner_name = sys.argv[1], sys.argv[2]
+    get_commits(repo_name, owner_name)
