@@ -9,9 +9,6 @@ import sys
 import base64
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print(f"Usage: {sys.argv[0]} <username> <pesonal_access_token>")
-        sys.exit(1)
 
     usern = sys.argv[1]
     token = sys.argv[2]
