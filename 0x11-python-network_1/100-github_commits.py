@@ -23,6 +23,7 @@ def get_commits(repo_name, owner_name):
         author_name = commit['commit']['author']['name']
         print(f"{sha}: {author_name}")
 
+
 if __name__ == "__main__":
     repo_name, owner_name = sys.argv[1], sys.argv[2]
     get_commits(repo_name, owner_name)
