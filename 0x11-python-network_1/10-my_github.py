@@ -6,16 +6,16 @@ to display the user ID
 
 import requests
 import sys
-import base64
 
 if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print(f"Usage: {sys.argv[0]} <username> <personal_access_token>")
+        sys.exit(1)
 
-    usern = sys.argv[1]
-    token = sys.argv[2]
-
+    usern, token = sys.argv[1], sys.argv[2]
     url = 'https://api.github.com/user'
-
-    headers = {'Authorization': f'Bearer {token}'}
+:x
+    headers = {'Authorization': f'token {token}'}
     response = requests.get(url, headers=headers)
 
     user_data = response.json()
