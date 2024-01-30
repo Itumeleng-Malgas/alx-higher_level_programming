@@ -9,6 +9,8 @@ if (process.argv.length !== 3) {
 function handleFileRead (err, data) {
   if (!err) {
     console.log(data);
+  } else {
+    console.log(err);
   }
 }
 
