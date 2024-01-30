@@ -8,11 +8,11 @@ if (process.argv.length !== 3) {
 }
 const url = process.argv[2];
 
-function handleRequestCallback(err, res) {
+function handleRequestCallback (err, res) {
   if (!err) {
     console.log(`code: ${res.statusCode}`);
   } else {
-    console.log(err)
+    console.log(err);
   }
 }
 
